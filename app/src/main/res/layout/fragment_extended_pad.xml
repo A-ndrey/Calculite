@@ -1,11 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.GridLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/extended_pad"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_column="4"
-    android:layout_row="4">
+    app:columnCount="4">
 
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="("/>
 
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text=")"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="^"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="√"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="e"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="π"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="!"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="ln"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="log"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="sin"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="cos"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="tan"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="%"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="mod"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="rad"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:onClick="clickButton"
+        android:text="deg"/>
 
 </android.support.v7.widget.GridLayout>

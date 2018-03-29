@@ -16,4 +16,8 @@ class MainPadFragment: Fragment(), BaseView{
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater!!.inflate(R.layout.fragment_main_pad, container, false)
     }
+
+    fun onClick(view: View){
+
+    }
 }
