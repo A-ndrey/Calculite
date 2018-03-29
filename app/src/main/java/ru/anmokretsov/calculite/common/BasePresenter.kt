@@ -1,4 +1,4 @@
-package ru.anmokretsov.calculite
+package ru.anmokretsov.calculite.common
 
 /**
  * Created by Андрей on 25.03.2018.

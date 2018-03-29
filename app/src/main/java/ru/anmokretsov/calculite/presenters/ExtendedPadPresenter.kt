@@ -1,7 +1,7 @@
-package ru.anmokretsov.calculite.calculator.presenters
+package ru.anmokretsov.calculite.presenters
 
-import ru.anmokretsov.calculite.BasePresenter
-import ru.anmokretsov.calculite.BaseView
+import ru.anmokretsov.calculite.common.BasePresenter
+import ru.anmokretsov.calculite.common.BaseView
 
 class ExtendedPadPresenter(private val extendedPadView: BaseView) : BasePresenter(extendedPadView) {
 

@@ -1,17 +1,16 @@
-package ru.anmokretsov.calculite.calculator
+package ru.anmokretsov.calculite
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.GridLayout
 import android.view.View
-import ru.anmokretsov.calculite.BasePresenter
-import ru.anmokretsov.calculite.R
-import ru.anmokretsov.calculite.calculator.fragments.DisplayFragment
-import ru.anmokretsov.calculite.calculator.fragments.ExtendedPadFragment
-import ru.anmokretsov.calculite.calculator.fragments.MainPadFragment
-import ru.anmokretsov.calculite.calculator.presenters.DisplayPresenter
-import ru.anmokretsov.calculite.calculator.presenters.ExtendedPadPresenter
-import ru.anmokretsov.calculite.calculator.presenters.MainPadPresenter
+import ru.anmokretsov.calculite.common.BasePresenter
+import ru.anmokretsov.calculite.fragments.DisplayFragment
+import ru.anmokretsov.calculite.fragments.ExtendedPadFragment
+import ru.anmokretsov.calculite.fragments.MainPadFragment
+import ru.anmokretsov.calculite.presenters.DisplayPresenter
+import ru.anmokretsov.calculite.presenters.ExtendedPadPresenter
+import ru.anmokretsov.calculite.presenters.MainPadPresenter
 
 class CalculatorActivity : AppCompatActivity() {
 

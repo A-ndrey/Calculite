@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.anmokretsov.calculite.calculator.CalculatorActivity">
+    tools:context="ru.anmokretsov.calculite.CalculatorActivity">
 
     <android.support.v7.widget.ContentFrameLayout
         android:id="@+id/display_frame"

@@ -1,12 +1,12 @@
-package ru.anmokretsov.calculite.calculator.fragments
+package ru.anmokretsov.calculite.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import ru.anmokretsov.calculite.BasePresenter
-import ru.anmokretsov.calculite.BaseView
+import ru.anmokretsov.calculite.common.BasePresenter
+import ru.anmokretsov.calculite.common.BaseView
 import ru.anmokretsov.calculite.R
 
 /**
