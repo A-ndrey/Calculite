@@ -1,4 +1,4 @@
-package ru.anmokretsov.calculite.calculator
+package ru.anmokretsov.calculite.calculator.fragments
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

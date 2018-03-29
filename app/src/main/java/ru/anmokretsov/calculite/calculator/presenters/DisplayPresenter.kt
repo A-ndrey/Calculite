@@ -1,9 +1,9 @@
-package ru.anmokretsov.calculite.calculator
+package ru.anmokretsov.calculite.calculator.presenters
 
 import ru.anmokretsov.calculite.BasePresenter
 import ru.anmokretsov.calculite.BaseView
 
-class MainPadPresenter(val mainPadView: BaseView):BasePresenter(mainPadView) {
+class DisplayPresenter(private val displayView: BaseView): BasePresenter(displayView) {
 
     override fun start() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

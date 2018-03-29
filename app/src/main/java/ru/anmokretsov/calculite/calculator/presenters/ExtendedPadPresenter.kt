@@ -1,4 +1,4 @@
-package ru.anmokretsov.calculite.calculator
+package ru.anmokretsov.calculite.calculator.presenters
 
 import ru.anmokretsov.calculite.BasePresenter
 import ru.anmokretsov.calculite.BaseView

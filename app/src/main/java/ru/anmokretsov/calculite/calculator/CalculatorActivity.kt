@@ -6,6 +6,12 @@ import android.support.v7.widget.GridLayout
 import android.view.View
 import ru.anmokretsov.calculite.BasePresenter
 import ru.anmokretsov.calculite.R
+import ru.anmokretsov.calculite.calculator.fragments.DisplayFragment
+import ru.anmokretsov.calculite.calculator.fragments.ExtendedPadFragment
+import ru.anmokretsov.calculite.calculator.fragments.MainPadFragment
+import ru.anmokretsov.calculite.calculator.presenters.DisplayPresenter
+import ru.anmokretsov.calculite.calculator.presenters.ExtendedPadPresenter
+import ru.anmokretsov.calculite.calculator.presenters.MainPadPresenter
 
 class CalculatorActivity : AppCompatActivity() {
 
