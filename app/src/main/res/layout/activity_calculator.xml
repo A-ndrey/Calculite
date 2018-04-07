@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ru.anmokretsov.calculite.CalculatorActivity">
+    tools:context="ru.anmokretsov.calculite.MainActivity">
 
     <android.support.constraint.Guideline
         android:id="@+id/display_guideline"
@@ -52,6 +52,8 @@
             android:gravity="end"
             android:textAlignment="textEnd"
             android:textSize="56sp"
+            android:scrollHorizontally="true"
+            android:ellipsize="marquee"
             android:paddingRight="20dp"
             android:text="256"
             app:layout_constraintTop_toBottomOf="@id/delete_button"/>
@@ -64,6 +66,8 @@
             android:gravity="end"
             android:textAlignment="textEnd"
             android:textSize="28sp"
+            android:scrollHorizontally="true"
+            android:maxLines="1"
             android:paddingRight="20dp"
             android:text="2^(3+5)"
             app:layout_constraintTop_toBottomOf="@id/result_text_view"

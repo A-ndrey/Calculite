@@ -7,6 +7,8 @@ import android.view.ViewGroup
 
 class PadAdapter(private val titlesForButton: Array<String>) : RecyclerView.Adapter<PadAdapter.ViewHolder>() {
 
+    lateinit var listener: Listener
+
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent!!.context).inflate(R.layout.pad_button, parent, false) as AppCompatButton)
     }
@@ -19,6 +21,13 @@ class PadAdapter(private val titlesForButton: Array<String>) : RecyclerView.Adap
         holder?.button?.text = titlesForButton[position]
     }
 
-    class ViewHolder(val button: AppCompatButton) : RecyclerView.ViewHolder(button){}
+    inner class ViewHolder(val button: AppCompatButton) : RecyclerView.ViewHolder(button){
+        init {
+            button.setOnClickListener { listener.onClick((it as AppCompatButton).text.toString()) }
+        }
+    }
 
+    interface Listener{
+        fun onClick(operation: String)
+    }
 }

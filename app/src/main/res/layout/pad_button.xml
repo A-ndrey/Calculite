@@ -2,6 +2,6 @@
 <android.support.v7.widget.AppCompatButton
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Button_NewStyle"
-    android:textSize="32sp"
+    android:textSize="30sp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>

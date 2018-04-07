@@ -6,5 +6,5 @@
     <color name="colorDark">#9428E5</color>
     <color name="colorMiddle">#BA51C8</color>
     <color name="colorLight">#FB9797</color>
-    <color name="colorText">#ffffff</color>
+    <color name="text">#ffffff</color>
 </resources>

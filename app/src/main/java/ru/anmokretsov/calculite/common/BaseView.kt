@@ -5,6 +5,8 @@ package ru.anmokretsov.calculite.common
  */
 interface BaseView {
 
-    var presenter: BasePresenter
+    fun setResult(result: String)
+
+    fun setExpression(expression: String)
 
 }

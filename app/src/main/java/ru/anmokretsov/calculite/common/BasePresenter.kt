@@ -5,10 +5,7 @@ package ru.anmokretsov.calculite.common
  */
 abstract class BasePresenter(val view: BaseView) {
 
-    init {
-        view.presenter = this
-    }
+    abstract fun doOperation(operation: String)
 
-    abstract fun start()
-
+    abstract fun deleteLastOperation()
 }
