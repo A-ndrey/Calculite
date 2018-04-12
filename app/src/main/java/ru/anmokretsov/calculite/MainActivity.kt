@@ -7,6 +7,8 @@ import android.support.v7.widget.GridLayoutManager
 import android.view.View
 import android.widget.ScrollView
 import kotlinx.android.synthetic.main.activity_calculator.*
+import ru.anmokretsov.calculite.Helper.dataForExtendedPad
+import ru.anmokretsov.calculite.Helper.dataForMainPad
 import ru.anmokretsov.calculite.common.BasePresenter
 import ru.anmokretsov.calculite.common.BaseView
 
