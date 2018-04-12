@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.design.widget.BottomSheetBehavior
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.view.View
+import android.widget.ScrollView
 import kotlinx.android.synthetic.main.activity_calculator.*
 import ru.anmokretsov.calculite.common.BasePresenter
 import ru.anmokretsov.calculite.common.BaseView
@@ -44,7 +46,7 @@ class MainActivity : AppCompatActivity(), BaseView, PadAdapter.Listener{
     }
 
     override fun setExpression(expression: String) {
-        expression_text_view.text = expression_text_view.text.toString() + expression
+        expression_text_view.append(expression)
     }
 
 }
