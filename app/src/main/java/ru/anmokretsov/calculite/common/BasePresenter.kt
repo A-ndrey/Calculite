@@ -8,4 +8,6 @@ abstract class BasePresenter(val view: BaseView) {
     abstract fun doOperation(operation: String)
 
     abstract fun deleteLastOperation()
+
+    abstract fun clearAll() : Boolean
 }

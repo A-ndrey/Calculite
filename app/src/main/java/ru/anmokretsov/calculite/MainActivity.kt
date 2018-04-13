@@ -20,6 +20,8 @@ class MainActivity : AppCompatActivity(), BaseView, PadAdapter.Listener{
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calculator)
 
+        presenter = MainPresenter(this)
+
         BottomSheetBehavior.from(main_pad_recycler).state = BottomSheetBehavior.STATE_EXPANDED
 
         main_pad_recycler.setHasFixedSize(true)
@@ -35,8 +37,8 @@ class MainActivity : AppCompatActivity(), BaseView, PadAdapter.Listener{
         extended_pad_recycler.adapter = padAdapter
 
         delete_button.setOnClickListener{ presenter.deleteLastOperation()}
+        delete_button.setOnLongClickListener { presenter.clearAll()}
 
-         presenter = MainPresenter(this)
     }
 
     override fun onClick(operation: String) {
