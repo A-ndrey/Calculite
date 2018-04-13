@@ -1,6 +1,6 @@
 package ru.anmokretsov.calculite
 
-object Helper {
+object NamesHelper {
 
     val NUMBERS = Array(10, { it.toString() })
     const val L_PAREN = "("
