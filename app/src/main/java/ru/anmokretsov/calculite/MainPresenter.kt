@@ -5,8 +5,10 @@ import ru.anmokretsov.calculite.common.BaseView
 
 class MainPresenter(view: BaseView) : BasePresenter(view) {
 
+    val calculatorModel = CalculatorModel()
+
     override fun doOperation(operation: String) {
-        view.setExpression(operation)
+        calculatorModel.addElement(operation) {view.setExpression(it)}
     }
 
     override fun deleteLastOperation(){

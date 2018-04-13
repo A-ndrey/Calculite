@@ -1,12 +1,5 @@
 package ru.anmokretsov.calculite
 
-import ru.anmokretsov.calculite.Helper.CONST_PI
-import ru.anmokretsov.calculite.Helper.DIVIDER
-import ru.anmokretsov.calculite.Helper.FUN_SQRT
-import ru.anmokretsov.calculite.Helper.OP_DIV
-import ru.anmokretsov.calculite.Helper.OP_MUL
-import java.lang.Math
-
 object Helper {
 
     val NUMBERS = Array(10, { it.toString() })
@@ -20,7 +13,7 @@ object Helper {
     const val OP_FAC = "!"
     const val OP_PERC = "%"
     const val OP_MOD = "mod"
-    const val FUN_SQRT = "√"
+    const val OP_SQRT = "√"
     const val FUN_LN = "ln"
     const val FUN_LOG = "log"
     const val FUN_SIN = "sin"
@@ -40,25 +33,9 @@ object Helper {
             DIVIDER, NUMBERS[0], EQUAL, OP_ADD)
 
     val dataForExtendedPad = arrayOf(
-            L_PAREN, R_PAREN, OP_POW, FUN_SQRT,
+            L_PAREN, R_PAREN, OP_POW, OP_SQRT,
             CONST_E, CONST_PI, OP_FAC, FUN_LN,
             FUN_LOG, FUN_SIN, FUN_COS, FUN_TAN,
             OP_PERC, OP_MOD, FUN_RAD, FUN_DEG)
-
-    fun tokenize(token: String): List<Token> {
-
-        var tokens: List<Token> = ArrayList()
-
-        when (token) {
-            L_PAREN, R_PAREN -> tokens += Token(token, Token.Type.PARENTHESES)
-            in NUMBERS, DIVIDER -> if (tokens.last().type == Token.Type.NUMBER) tokens.last().value += token else tokens += Token(token, Token.Type.NUMBER)
-            OP_DIV, OP_MUL, OP_SUB, OP_ADD, OP_POW, OP_FAC, OP_PERC, OP_MOD -> tokens += Token(token, Token.Type.OPERATOR)
-            CONST_E -> tokens += Token(Math.E.toString(), Token.Type.CONSTANT)
-            CONST_PI -> tokens += Token(Math.PI.toString(), Token.Type.CONSTANT)
-            FUN_COS, FUN_DEG, FUN_LN, FUN_LOG, FUN_RAD, FUN_SIN, FUN_TAN, FUN_SQRT -> tokens += Token(token, Token.Type.FUNCTION)
-        }
-
-        return tokens
-    }
 
 }

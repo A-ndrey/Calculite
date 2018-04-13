@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity(), BaseView, PadAdapter.Listener{
     }
 
     override fun setExpression(expression: String) {
-        expression_text_view.append(expression)
+        expression_text_view.text = expression
     }
 
 }
