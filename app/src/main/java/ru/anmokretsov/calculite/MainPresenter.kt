@@ -9,23 +9,24 @@ class MainPresenter(view: BaseView) : BasePresenter(view) {
 
     override fun doOperation(operation: String) {
         calculatorModel.addElement(operation)
-        updateDispaly()
+        updateDisplay()
+        if (operation == NamesHelper.EQUAL) view.setResult(calculatorModel.result)
     }
 
     override fun deleteLastOperation(){
         calculatorModel.deleteLastToken()
-        updateDispaly()
+        updateDisplay()
     }
 
     override fun clearAll() : Boolean{
         calculatorModel.clear()
-        updateDispaly()
+        updateDisplay()
         return true
     }
 
-    private fun updateDispaly(){
+    private fun updateDisplay(){
         view.setExpression(calculatorModel.expression)
-        view.setResult(calculatorModel.result)
+        //view.setResult(calculatorModel.result)
     }
 
 }

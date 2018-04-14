@@ -7,19 +7,11 @@
     android:layout_height="match_parent"
     tools:context="ru.anmokretsov.calculite.MainActivity">
 
-    <android.support.constraint.Guideline
-        android:id="@+id/display_guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent=".375"/>
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/display_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="170dp"
         android:background="@drawable/display_background"
-        app:layout_constraintBottom_toTopOf="@id/display_guideline"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,6 +21,7 @@
             style="@style/Button_NewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:text="@string/decimal"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,6 +32,7 @@
             style="@style/Button_NewStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
             android:text="@string/delete_button"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="@+id/result_text_view"
@@ -49,21 +43,20 @@
             style="@style/TextView_NewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ellipsize="marquee"
             android:gravity="end"
             android:paddingRight="20dp"
-            android:scrollHorizontally="true"
             android:textAlignment="textEnd"
-            android:textSize="56sp"
+            android:textSize="48sp"
+            app:layout_constraintBottom_toTopOf="@id/expression_scroll_view"
             app:layout_constraintTop_toBottomOf="@id/delete_button"/>
 
         <HorizontalScrollView
             android:id="@+id/expression_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:fillViewport="true"
             android:paddingRight="20dp"
-            android:paddingLeft="20dp"
             android:scrollbars="none"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/result_text_view">
@@ -90,7 +83,7 @@
         app:layout_constraintHeight_default="spread"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/display_guideline">
+        app:layout_constraintTop_toBottomOf="@id/display_view">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/extended_pad_recycler"
@@ -101,7 +94,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/main_pad_recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="320dp"
             android:background="@drawable/main_pad_background"
             app:behavior_peekHeight="80dp"
             app:layout_behavior="@string/bottom_sheet_behavior"/>

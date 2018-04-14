@@ -3,5 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/Button_NewStyle"
     android:textSize="30sp"
+    android:maxLines="1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"/>

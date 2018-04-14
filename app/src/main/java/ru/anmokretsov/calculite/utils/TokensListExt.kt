@@ -1,13 +1,9 @@
 package ru.anmokretsov.calculite.utils
 
-import android.util.Log
 import ru.anmokretsov.calculite.NamesHelper
-import ru.anmokretsov.calculite.NamesHelper.OP_DIV
+import ru.anmokretsov.calculite.tokens.*
 import ru.anmokretsov.calculite.tokens.Function
 import ru.anmokretsov.calculite.tokens.Number
-import ru.anmokretsov.calculite.tokens.Operator
-import ru.anmokretsov.calculite.tokens.Parentheses
-import ru.anmokretsov.calculite.tokens.Token
 import java.util.*
 
 fun List<Token>.toExpression() : String{
@@ -22,44 +18,47 @@ fun List<Token>.toExpression() : String{
 fun MutableList<Token>.calculate() : Double?{
     if (this.none()) return null
 
-    return .0
-}
-
-fun MutableList<Token>.toRPN() : LinkedList<Token>{
-
-    val stackOperations = LinkedList<Token>()
-    val outQueue = LinkedList<Token>()
+    val operationsStack = LinkedList<Token>()
+    val numbersStack = LinkedList<Number>()
 
     for (token in this){
         when(token){
-            is Number -> outQueue += token
-            is Function -> stackOperations += token
+            is Number -> numbersStack.addFirst(token)
+            is Function -> operationsStack.addFirst(token)
             is Operator -> {
-                while (stackOperations.peek() is Operator && stackOperations.peek() as Operator >= token) {
-                    outQueue += stackOperations.pop()
+                while (operationsStack.peek() is Operator && operationsStack.peek() as Operator >= token) {
+                    (operationsStack.pop() as Operation).exec(numbersStack)
                 }
-                stackOperations += token
+                operationsStack.push(token)
             }
             is Parentheses ->
-                if ((token).isLeft) stackOperations += token
+                if ((token).isLeft) operationsStack.push(token)
                 else {
-                    while (stackOperations.peek() is Operator) {
-                        outQueue += stackOperations.pop()
+                    while (operationsStack.peek() is Operator) {
+                        (operationsStack.pop() as Operation).exec(numbersStack)
                     }
-                    if (stackOperations.peek() is Parentheses) stackOperations.pop()
-                    else if (stackOperations.peek() is Function) outQueue += stackOperations.pop()
+                    if (operationsStack.peek() is Parentheses) operationsStack.pop()
+                    else if (operationsStack.peek() is Function) (operationsStack.pop() as Operation).exec(numbersStack)
                     else {//TODO expected left parentheses, but was null
                     }
                 }
         }
     }
 
-    while (!stackOperations.none()){
-        if(stackOperations.peek() is Parentheses){} //TODO was left parentheses
-        else outQueue += stackOperations.pop()
+    while (!operationsStack.none()){
+        if(operationsStack.peek() is Parentheses){} //TODO was left parentheses
+        else (operationsStack.pop() as Operation).exec(numbersStack)
     }
 
-    return outQueue
+    return numbersStack.pop().toDouble()
+}
+
+
+fun MutableList<Token>.deleteLast(){
+    if (this.isEmpty()) return
+    if(this.last() is Number && !(this.last() as Number).isConst && this.last().value.length > 1)
+        this.last().value = this.last().value.dropLast(1)
+    else this.removeAt(this.lastIndex)
 }
 
 fun MutableList<Token>.tokenize(name: String) {
@@ -70,16 +69,76 @@ fun MutableList<Token>.tokenize(name: String) {
 
         in NamesHelper.NUMBERS, NamesHelper.DIVIDER -> if (!this.isEmpty() && this.last() is Number && !(this.last() as Number).isConst)
             this.last().value += name else this += Number(name)
-
-        NamesHelper.OP_FAC, NamesHelper.OP_PERC -> this += Operator(name, 5)
-        NamesHelper.OP_SQRT, NamesHelper.OP_POW -> this += Operator(name, 4)
-        NamesHelper.OP_DIV, NamesHelper.OP_MUL -> this += Operator(name, 3)
-        NamesHelper.OP_MOD -> this += Operator(name, 2)
-        NamesHelper.OP_SUB, NamesHelper.OP_ADD -> this += Operator(name, 1)
-
         NamesHelper.CONST_E, NamesHelper.CONST_PI -> this += Number(name, true)
 
-        NamesHelper.FUN_COS, NamesHelper.FUN_DEG, NamesHelper.FUN_LN, NamesHelper.FUN_LOG,
-        NamesHelper.FUN_RAD, NamesHelper.FUN_SIN, NamesHelper.FUN_TAN -> this += Function(name)
+        NamesHelper.OP_FAC -> this += Operator(name, 5,
+                {
+                    it.push(Number(factorial(it.pop().toDouble()).toString()))
+                })
+        NamesHelper.OP_PERC -> this += Operator(name, 5,
+                {
+                    it.push(Number((it.pop().toDouble()*it.peek().toDouble()/100).toString()))
+                })
+        NamesHelper.OP_SQRT -> this += Operator(name, 4,
+                {
+                    it.push(Number( (Math.sqrt(it.pop().toDouble())).toString()))
+                })
+        NamesHelper.OP_POW -> this += Operator(name, 4,
+                {
+                    val num2 = it.pop().toDouble()
+                    val num1 = it.pop().toDouble()
+                    it.push( Number( Math.pow(num1, num2).toString()))
+                })
+        NamesHelper.OP_DIV -> this += Operator(name, 3,
+                {
+                    val num2 = it.pop().toDouble()
+                    val num1 = it.pop().toDouble()
+                    //TODO check zero division
+                    it.push( Number( (num1 / num2).toString()))
+                })
+        NamesHelper.OP_MUL -> this += Operator(name, 3,
+                {
+                    it.push(Number( (it.pop().toDouble() * it.pop().toDouble()).toString()))
+                })
+        NamesHelper.OP_MOD -> this += Operator(name, 2,
+                {
+                    val num2 = it.pop().toDouble()
+                    val num1 = it.pop().toDouble()
+                    //TODO check zero division
+                    it.push( Number( (num1 % num2).toString()))
+                })
+        NamesHelper.OP_SUB -> this += Operator(name, 1,
+                {
+                    val num2 = it.pop().toDouble()
+                    val num1 = it.pop().toDouble()
+                    it.push( Number( (num1 - num2).toString()))
+                })
+        NamesHelper.OP_ADD -> this += Operator(name, 1,
+                {
+                    it.push(Number( (it.pop().toDouble() + it.pop().toDouble()).toString()))
+                })
+
+
+        NamesHelper.FUN_COS -> this += Function(name,
+                {
+                    it.push(Number(Math.cos(it.pop().toDouble()).toString()))
+                })
+        NamesHelper.FUN_SIN -> this += Function(name,
+                {
+                    it.push(Number(Math.sin(it.pop().toDouble()).toString()))
+                })
+        NamesHelper.FUN_TAN -> this += Function(name,
+                {
+                    it.push(Number(Math.tan(it.pop().toDouble()).toString()))
+                })
+        NamesHelper.FUN_LN -> this += Function(name,
+                {
+                    it.push(Number(Math.log(it.pop().toDouble()).toString()))
+                })
+        NamesHelper.FUN_LOG -> this += Function(name,
+                {
+                    it.push(Number(Math.log10(it.pop().toDouble()).toString()))
+                })
+        NamesHelper.FUN_DEG, NamesHelper.FUN_RAD -> this += Function(name, {})
     }
 }

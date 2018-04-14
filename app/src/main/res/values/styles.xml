@@ -18,12 +18,12 @@
         <item name="android:minHeight">0dp</item>
         <item name="android:padding">20dp</item>
         <item name="android:textColor">@color/text</item>
-        <item name="android:fontFamily">@font/open_sans_light</item>
+        <item name="android:fontFamily">@font/open_sans_condensed_light</item>
         <item name="android:textAllCaps">false</item>
     </style>
 
     <style name="TextView_NewStyle">
         <item name="android:textColor">@color/text</item>
-        <item name="android:fontFamily">@font/open_sans_light</item>
+        <item name="android:fontFamily">@font/open_sans_condensed_light</item>
     </style>
 </resources>

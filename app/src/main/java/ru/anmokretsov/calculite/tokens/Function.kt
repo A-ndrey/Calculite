@@ -1,6 +1,8 @@
 package ru.anmokretsov.calculite.tokens
 
-class Function(value: String) : Token(value) {
+import java.util.*
+
+class Function(value: String, exec: (LinkedList<Number>) -> Unit) : Operation(value, exec) {
 
     override fun toString(): String  = "$value("
 }
