@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">Calculite</string>
+    <string name="delete_button">DELETE</string>
+    <string name="decimal">DEC</string>
+    <string name="binary">BIN</string>
+
+    <string name="op_div">÷</string>
+    <string name="op_mul">×</string>
+    <string name="op_sub">-</string>
+    <string name="op_add">+</string>
+    <string name="op_pow">^</string>
+    <string name="op_mod">mod</string>
+    <string name="un_op_percent">%</string>
+    <string name="un_op_factorial">!</string>
+    <string name="un_op_sqrt">√</string>
+    <string name="const_e">e</string>
+    <string name="const_pi">π</string>
+    <string name="fun_sin">sin</string>
+    <string name="fun_cos">cos</string>
+    <string name="fun_ln">ln</string>
+    <string name="fun_log">log</string>
+    <string name="fun_tan">tan</string>
+    <string name="fun_deg">deg</string>
+    <string name="fun_rad">rad</string>
+
 </resources>
